@@ -229,7 +229,7 @@ class TPgsqlMetaData extends TDbMetaData
 		if ($col['atthasdef']) {
 			$info['DefaultValue'] = $col['adsrc'];
 		}
-		if ($col['attisserial'] || substr($col['adsrc'], 0, 8) === 'nextval(') {
+		if ($col['attisserial'] || substr($col['adsrc']??'', 0, 8) === 'nextval(') {
 			if (($sequence = $this->getSequenceName($tableInfo, $col['adsrc'])) !== null) {
 				$info['SequenceName'] = $sequence;
 				unset($info['DefaultValue']);
